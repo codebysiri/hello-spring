@@ -9,7 +9,11 @@ import java.util.Optional;
 
 public class MemberService {
 
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    private final MemberRepository memberRepository;
+
+    public MemberService(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
 
     // 회원가입
     public Long join(Member member) {
@@ -32,7 +36,7 @@ public class MemberService {
     }
 
     // 전체 회원 조회
-    private List<Member> findMembers() {
+    public List<Member> findMembers() {
         return memberRepository.findAll();
     }
 
